@@ -30,6 +30,20 @@ namespace ChinookSystem
                 //Create an instance of the services and return the instace
                 return new AboutServices(context);
             });
+
+            services.AddTransient<GenreServices>((serviceProvider) =>
+            {
+                var context = serviceProvider.GetRequiredService<ChinookContext>();
+                //Create an instance of the Genre and return the instace
+                return new GenreServices(context);
+            });
+
+            services.AddTransient<AlbumServices>((serviceProvider) =>
+            {
+                var context = serviceProvider.GetRequiredService<ChinookContext>();
+                //Create an instance of the Genre and return the instace
+                return new AlbumServices(context);
+            });
         }
     }
 }

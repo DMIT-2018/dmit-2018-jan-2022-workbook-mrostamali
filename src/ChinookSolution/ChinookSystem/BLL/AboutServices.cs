@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 #region Additional Namespaces
 using ChinookSystem.DAL;
-//using ChinookSystem.Entities;
+using ChinookSystem.Entities;
 using ChinookSystem.ViewModels;
 #endregion
 
