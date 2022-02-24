@@ -1,0 +1,42 @@
+﻿@page
+@model WebApp.Pages.SamplePages.AlbumsByGenreQueryModel
+@{
+    ViewData["Title"] = "Albums by Genre";
+}
+
+<h1>Albums by Genre</h1>
+<blockquote>
+    This page is to demonstration:
+    <ul>
+        <li>Use of the select tag</li>
+        <li>Use of the input/datalist tags</li>
+        <li>Table creation</li>
+        <li>Paging</li>
+    </ul>
+</blockquote>
+
+@if(Model.HasFeedback)
+{
+    <p>@Model.FeedBack</p>
+}
+
+@if(Model.HasErrorMsg)
+{
+    <p style="color:firebrick; font-weight:bold;">@Model.ErrorMsg</p>
+}
+
+<form method="post">
+    <label>
+        Select Genre to view albums
+        <select asp-for="GenreId">
+            <option value="0">select genre ...</option>
+            @foreach(var item in Model.GenreList)
+            {
+                <option value="@item.ValueId">@item.DisplayText</option>
+            }
+        </select>
+    </label>
+    <button type="submit">Find Albums</button>
+    @* We dont need any asp-for or handler here because there is only one button here. *@
+</form>
+

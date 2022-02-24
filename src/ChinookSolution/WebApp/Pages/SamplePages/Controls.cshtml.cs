@@ -1,5 +1,10 @@
+#nullable disable
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
+#region Additional Namespace
+using ChinookSystem.ViewModels;
+#endregion
 
 namespace WebApp.Pages.SamplePages
 {
@@ -98,9 +103,11 @@ namespace WebApp.Pages.SamplePages
         }
     }
 
-    public class SelectionList
-    {
-        public int ValueId { get; set; }
-        public string? DisplayText { get; set; }
-    }
+
+    //Insted of this class we use (using ChinookSystem.ViewModels;) namespace
+    //public class SelectionList
+    //{
+    //    public int ValueId { get; set; }
+    //    public string DisplayText { get; set; }
+    //}
 }

@@ -25,14 +25,9 @@
                 <li>
 @*                    add a logo to the menu taking on to the Home page (Index)
 *@                    <a asp-area="" asp-page="/Index">
-                         <img src="~/img/ChinookMusicMenuLogo.jpg"
-                                alt="Chinook logo"
-                                title="Go to Home" />
-                            </a>
+                         <img src="~/img/ChinookMusicMenuLogo.jpg" alt="Chinook logo" title="Go to Home"/></a>                    
                 </li>
-                <li>
-                    <a asp-area="" asp-page="/Index">Home</a>
-                </li>
+                <li><a asp-area="" asp-page="/Index">Home</a></li>
                 @*
                     setup a submenu (drop-down menu) using holiday.css
                        see holidaycss.js.org
@@ -45,12 +40,9 @@
                 <li>
                     <span>Samples</span>
                     <ul>
-                        <li>
-                            <a asp-area="" asp-page="/SamplePages/Basics">Basics</a>
-                        </li>
-                        <li>
-                            <a asp-area="" asp-page="/SamplePages/Controls">Controls</a>
-                        </li>
+                        <li><a asp-area="" asp-page="/SamplePages/Basics">Basics</a></li>
+                        <li><a asp-area="" asp-page="/SamplePages/Controls">Controls</a></li>
+                        <li><a asp-area="" asp-page="/SamplePages/AlbumsByGenreQuery">Query using a paged table</a></li>
                     </ul>
                 </li>
                 <li>

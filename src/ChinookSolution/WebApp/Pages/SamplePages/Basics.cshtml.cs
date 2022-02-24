@@ -13,7 +13,7 @@ namespace WebApp.Pages.SamplePages
         //properties
 
         //The annotation [TempData] stores data until it's read in another immediate request
-        //This annotation attribute has two method called keep(string) and Peek(string)
+        //This annotation attribute has two method called keep(string) and Peek(string) (used on content page)
         //This information is keep int a dictionary (name/value pair)
         //Useful to redirect when data is required for more than a single request
         //Implemented by TempData providers using either cookies or session state
@@ -67,7 +67,7 @@ namespace WebApp.Pages.SamplePages
         //      :does NOT issue a OnGet request
         //      :remains on the current page
         //      :a good action for form processing involving validation and with the catch of aa try/catch
-        //RedirectToPage()
+        //  RedirectToPage()
         //      :Does issue an OnGet request
         //      :is used to retaining input values via the @page and your BindProperty form controls on your form on the content Page
 
@@ -75,12 +75,13 @@ namespace WebApp.Pages.SamplePages
         {
             //This line of code is used to cause a delay in processing so we can
             //  see on the Network Activity some type of simulated processing
-            Thread.Sleep(2000);
+            Thread.Sleep(2000);  // It will be 2 seconds, because it is on milliseconds
 
             //Retreive data via the Request object
             //Request: web page to server
             //Response: server to web page
             string buttonvalue = Request.Form["theButton"];
+            // If we want to pass data to other pages we can use Request.String
             FeedBack = $"Button press is {buttonvalue} with numeric input of {id}";
             //return Page(); //Does not issue an OnGet() 
             return RedirectToPage(new { id = id }); //Request for OnGet()

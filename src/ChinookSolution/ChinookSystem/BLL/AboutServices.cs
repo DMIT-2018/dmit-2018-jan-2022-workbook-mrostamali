@@ -36,7 +36,7 @@ namespace ChinookSystem.BLL
         public DbVersionInfo GetDbVersion()
         {
             //DbVersionInfo is a public "view" of data defined in a class
-            //DbVersion can be a class used BOTH internally and by external users
+            //DbVersionInfo can be a class used BOTH internally and by external users
             //DbVersion is an internal entity description used ONLY in the library
             DbVersionInfo info = _context.DbVersions
                                 .Select(x => new DbVersionInfo

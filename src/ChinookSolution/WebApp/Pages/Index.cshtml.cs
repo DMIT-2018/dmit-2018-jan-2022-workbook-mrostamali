@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#nullable disable
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 #region Additional Namespaces
@@ -22,8 +23,9 @@ namespace WebApp.Pages
         #endregion
 
         #region Feedback and ErrorHandling
-        [TempData]
-        public string? FeedBack { get; set; }
+        //[TempData]
+        // If we make it a TempData, it will be shown on every page because it will be stored on the RAM
+        public string FeedBack { get; set; }
         public bool HasFeedback => !string.IsNullOrWhiteSpace(FeedBack);
         #endregion
 

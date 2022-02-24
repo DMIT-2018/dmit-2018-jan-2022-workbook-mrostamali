@@ -29,10 +29,12 @@ namespace ChinookSystem.BLL
         #region Services: Queries 
         public List<AlbumsListBy> AlbumsByGenre(int genreid)
         {
-            //return raw data and let the presentation layer decde ordering
+            //return raw data and let the presentation layer decide ordering
             IEnumerable<AlbumsListBy> info = _context.Tracks
                                                 .Where(x => x.GenreId == genreid && x.AlbumId.HasValue)
-                                                //Use HasValue here to make sure that the AlbumId has a value 
+                                                //Use AlbumId.HasValue here to make sure that the AlbumId has a value
+                                                //  becuase AlbumId on Track Table is optiona and all tracks
+                                                //  does not have AlbumId 
                                                 .Select(x => new AlbumsListBy 
                                                 { 
                                                     AlbumId = (int)x.AlbumId,

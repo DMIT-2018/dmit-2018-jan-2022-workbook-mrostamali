@@ -29,6 +29,11 @@ namespace ChinookSystem.BLL
         //obtain a list of Genres to be used in a select list 
         public List<SelectionList> GetAllGenres()
         {
+            // We use IEnumerable here because we know that everything that is going to come back 
+            //   from our database will be either IEnumerable or IQuerable. Then we change it to
+            //   the .ToList() on our return statement.
+            // Note: SelectionList is our class in the ViewModels folder, which is a container for 
+            //       passing data to the public 
             IEnumerable<SelectionList> info = _context.Genres
                                                 .Select(g => new SelectionList
                                                 {
@@ -37,6 +42,7 @@ namespace ChinookSystem.BLL
                                                 });
                                               //.OrderBy(g => g.DisplayText);  //This sort is in Sql
             return info.ToList();
+            // We can also do our sort on our return statements like:
             //return info.OrderBy(g => g.DisplayText).ToList();   // This sort is in RAM
         }
         #endregion

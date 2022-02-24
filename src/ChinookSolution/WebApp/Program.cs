@@ -33,7 +33,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //The implementation of the DBContent and AddTransient(..) code in this example 
 //   will be done in an extension method to IServiceCollection 
 //The extension method will be coded inside the ChinookSystem class library 
-//The extension method will have a parameter: and this paramater is and options => options.UseSqlServer()
+//The extension method will have a parameter: and this paramater will be the options => options.UseSqlServer()
 builder.Services.ChinookSystemBackendDependencies(options =>
     options.UseSqlServer(connectionStringChinook));
 
