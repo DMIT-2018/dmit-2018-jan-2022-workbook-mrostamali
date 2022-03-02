@@ -53,7 +53,9 @@
             </label>
             <br />
             <button type="submit">Find Albums</button>
-            @* We dont need any asp-for or handler here because there is only one button here. *@
+            &nbsp;&nbsp
+            <button type="submit" asp-page-handler="New">New Album</button>
+            @* If we had just one button We didnt need to use any asp-for or handler here because there is only one button here. *@
         </form>
     </div>
     <div class="onehalf">
@@ -81,7 +83,12 @@
                         @foreach(var item in Model.AlbumsByGenre)
                         {
                             <tr>
-                                <td>@item.Title</td>
+                                @*The Title cell text will act as a link to 
+                                    transfer to the CRUD page for Album maintenance
+                                  The href uses the full relative path to the referenced page
+                                  The pkey value is attached to the path name
+                                *@
+                                <td><a href="/SamplePages/CRUDAlbum/@item.AlbumId">@item.Title</a></td>
                                 <td>@item.ReleaseYear</td>
                                 <td>@item.ReleaseLabel</td>
                                 <td>@item.ArtistName</td>
