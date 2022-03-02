@@ -1,42 +1,121 @@
-﻿@page
+﻿@page "{GenreId?}"
 @model WebApp.Pages.SamplePages.AlbumsByGenreQueryModel
 @{
     ViewData["Title"] = "Albums by Genre";
 }
 
 <h1>Albums by Genre</h1>
-<blockquote>
-    This page is to demonstration:
-    <ul>
-        <li>Use of the select tag</li>
-        <li>Use of the input/datalist tags</li>
-        <li>Table creation</li>
-        <li>Paging</li>
-    </ul>
-</blockquote>
 
-@if(Model.HasFeedback)
-{
-    <p>@Model.FeedBack</p>
+@section CustomCSS {
+    <partial name = "_MyCustomCSS" />
 }
 
-@if(Model.HasErrorMsg)
-{
-    <p style="color:firebrick; font-weight:bold;">@Model.ErrorMsg</p>
-}
+<section class="setflex">
+    <div class="onehalf">
+        <blockquote>
+            This page is to demonstration:
+            <ul>
+                <li>Use of the select tag</li>
+                <li>Use of the input/datalist tags</li>
+                <li>Table creation</li>
+                <li>Paging</li>
+                <li>customizing</li>
+            </ul>
+        </blockquote>
 
-<form method="post">
-    <label>
-        Select Genre to view albums
-        <select asp-for="GenreId">
-            <option value="0">select genre ...</option>
-            @foreach(var item in Model.GenreList)
+        @if(Model.HasFeedback)
+        {
+            <p>@Model.FeedBack</p>
+        }
+
+        @if(Model.HasErrorMsg)
+        {
+            <p style="color:firebrick; font-weight:bold;">@Model.ErrorMsg</p>
+        }
+
+        <form method="post">
+            <label>
+                Select Genre to view albums
+                <select asp-for="GenreId">
+                    <option value="0">select genre ...</option>
+                    @foreach(var item in Model.GenreList)
+                    {
+                        if(Model.GenreId == item.ValueId)
+                        {
+                            <option value="@item.ValueId" selected>@item.DisplayText</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ValueId">@item.DisplayText</option>
+                        }
+                    }
+                </select>
+            </label>
+            <br />
+            <button type="submit">Find Albums</button>
+            @* We dont need any asp-for or handler here because there is only one button here. *@
+        </form>
+    </div>
+    <div class="onehalf">
+        @*do not put out anything unless there is something to show*@
+        @if(Model.AlbumsByGenre !=null)
+        {
+            @*you have at least an instance of your collection*@
+            if(Model.AlbumsByGenre.Count() == 0)
             {
-                <option value="@item.ValueId">@item.DisplayText</option>
+                <p style="color:blue; font-weight:bold;">This genre has no tracks on any albums on file.</p>
             }
-        </select>
-    </label>
-    <button type="submit">Find Albums</button>
-    @* We dont need any asp-for or handler here because there is only one button here. *@
-</form>
+            else
+            {
+                @*otherwise you have rows to display*@
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Year</th>
+                            <th>Label</th>
+                            <th>Artist Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model.AlbumsByGenre)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.ReleaseYear</td>
+                                <td>@item.ReleaseLabel</td>
+                                <td>@item.ArtistName</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        @*Code to implement paging on our query using the Paginator*@
+                        <tr colspan="4">
+                            <td>
+                                @{
+                                    foreach(var pageRef in Model.Pager)
+                                    {
+                                        if(pageRef == Model.Pager.CurrentPage)
+                                        {
+                                            //Bold the current page number
+                                            <b>@pageRef.Text</b>
+                                        }
+                                        else
+                                        {
+                                            //Setup the remaining paging elements as links to 
+                                            //  cause the query to refreshed for the desired page
+                                            <a title="Page @pageRef.Page" 
+                                                    asp-page="/SamplePages/AlbumsByGenreQuery"
+                                                    asp-route-currentPage="@pageRef.Page">@pageRef.Text</a>
+                                        }
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            }
+        }
+    </div>
+</section>
 

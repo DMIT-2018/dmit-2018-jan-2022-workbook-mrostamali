@@ -9,7 +9,7 @@ using ChinookSystem.Entities;
 namespace ChinookSystem.DAL
 {
     internal partial class ChinookContext : DbContext
-    {
+    {   
         public ChinookContext()
         {
         }
