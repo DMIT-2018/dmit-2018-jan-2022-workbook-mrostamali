@@ -90,13 +90,13 @@ namespace WebApp.Pages.SamplePages
                 //    and the desired page size to the backend query
                 //The returned collection (AlbumsByGenre) will ONLY have the rows of the whole query
                 //   collection that will actually be shown (PAGE_SIZE or less rows)
-                //The total number of records for the whole query collcetion will be returned as 
+                //The total number of records for the whole query collection will be returned as 
                 //   an out parameter. This value is needed by the Paginator to set up its display logic.
                 AlbumsByGenre = _albumServices.AlbumsByGenre((int)GenreId, pageNumber, PAGE_SIZE, out totalrows);
 
-                //Once the query is complete, use the returned total rows in instanciating 
+                //Once the query is complete, use the returned total rows in instantiating  
                 //  an instance of the Paginator 
-                Pager = new Paginator(totalrows, current);
+                Pager = new Paginator(totalrows, current);  
             }
             
         }
