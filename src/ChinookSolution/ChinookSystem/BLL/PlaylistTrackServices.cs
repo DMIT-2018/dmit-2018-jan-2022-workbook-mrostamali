@@ -61,7 +61,7 @@ namespace ChinookSystem.BLL
             List<Exception> errorlist = new List<Exception> ();
 
             //Business Logic
-            //These are processing riles that need to be satisfied for valid data
+            //These are processing rules that need to be satisfied for valid data
             // rule: a track can only exist once on a playlist
             // rule: each track on a playlist is assigned a continuous track number 
             //
@@ -189,10 +189,10 @@ namespace ChinookSystem.BLL
             }
         }
 
-        public void PlayList_RemoveTracks(string playlistname, string username, 
+        public void PlayListTrack_RemoveTracks(string playlistname, string username, 
                                           List<PlaylistTrackMove> trackstoremove)
         {
-            Track trackExists = null;
+            //Track trackExists = null;
             Playlist playlistExists = null;
             PlaylistTrack playlisttrackExists = null;
             int tracknumber = 0;
@@ -281,7 +281,7 @@ namespace ChinookSystem.BLL
         public void PlayListTrack_MoveTracks(string playlistname, string username,
                    List<PlaylistTrackMove> trackstomove)
         {
-            Track trackExists = null;
+            //Track trackExists = null;
             Playlist playlistExists = null;
             PlaylistTrack playlisttrackExists = null;
             int tracknumber = 0;
