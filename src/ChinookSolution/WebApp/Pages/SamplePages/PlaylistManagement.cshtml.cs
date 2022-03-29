@@ -225,7 +225,7 @@ namespace WebApp.Pages.SamplePages
             {
                 //Add the code to process the list of tracks via the service.
                 string username = USERNAME;
-                _playlisttrackServices.PlayListTrack_RemoveTracks(playlistname.Trim(), username, cplaylistInfo);
+                //_playlisttrackServices.PlayListTrack_RemoveTracks(playlistname.Trim(), username, cplaylistInfo);
                 FeedBackMessage = "Tracks have been removed";
 
                 return RedirectToPage(new
@@ -266,7 +266,7 @@ namespace WebApp.Pages.SamplePages
             {
                 //Add the code to process the list of tracks via the service.
                 string username = USERNAME;
-                _playlisttrackServices.PlayListTrack_MoveTracks(playlistname.Trim(), username, cplaylistInfo);
+                //_playlisttrackServices.PlayListTrack_MoveTracks(playlistname.Trim(), username, cplaylistInfo);
                 FeedBackMessage = "Tracks have been re-sequenced";
 
                 return RedirectToPage(new
